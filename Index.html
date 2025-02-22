@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Application</title>
+
+    <style>
+        button{
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover{
+            background-color: green;
+        }
+        #text{
+            font-size: 20px;
+            color: red;
+        }
+    </style>
+    <style>
+        body{
+            background-color: lightblue;
+        }
+    </style>
+    
+</head>
+<body>
+    
+    <button onclick="alert('Hello Sir Wood')">Click Me</button>  
+    <p id="text">THIS IS MY FIRST HTML, CSS AND JS</p>  
+    <button onclick="document.getElementById('text').innerHTML = 'I AM A COMPUTER SCIENCE STUDENT'">Click Me</button>
+    <button id="click">Internal Javascript Click</button>
+    <button id="changeColor">Change Background Color</button>
+    <input type="text" id="colorInput" placeholder="Enter a color">
+    <input type="color" id="colorPicker">
+    <button id="applyColor">Apply Color</button>
+
+<script>
+    function greet(){
+        alert('Welcome to the Dynamic World');
+    }
+    const button = document.getElementById('Click');
+    document.getElementById("click").onclick = function(){
+        alert('Button was Clicked'); 
+    }
+    document.getElementById("changeColor").onclick = function(){
+        document.body.style.backgroundColor = "pink";
+    }
+
+    document.getElementById("applyColor").onclick = function(){
+        let colorInput = document.getElementById("colorInput").value.trim();
+        let colorPicker = document.getElementById("colorPicker").value;
+        let color = colorInput || colorPicker || "lightblue"; // Default color if input is empty
+
+        // Check if the color is valid
+        let isValidColor = (color) => {
+            let s = new Option().style;
+            s.color = color;
+            return s.color !== '';
+        };
+
+        if (isValidColor(color)) {
+            document.body.style.backgroundColor = color;
+        } else {
+            alert("Invalid color. Please enter a valid color name or hex code.");
+        }
+    }
+
+    document.getElementById("colorPicker").oninput = function(){
+        let colorPicker = document.getElementById("colorPicker").value;
+        document.body.style.backgroundColor = colorPicker;
+    }
+</script>
+</body>
+</html>
